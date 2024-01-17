@@ -17,11 +17,23 @@ public class Writers{
     public Writers(String path) throws IOException{
     }
 
-    HashMap<Integer, String> IndexType = new HashMap<Integer, String>(){{
+    public static HashMap<Integer, String> IndexType = new HashMap<Integer, String>(){{
         put(0, "integers");
         put(1, "floats");
         put(2, "strings");
     }};
+
+    public static void AddText(String filePath, String text){
+        try {
+            FileWriter writer = new FileWriter(filePath, true);
+            BufferedWriter bufferWriter = new BufferedWriter(writer);
+            bufferWriter.write(text);
+            bufferWriter.close();
+        }
+        catch (IOException e) {
+            System.out.println("Ошибка при добавлении текста в файл " + filePath);
+        }
+    }
 
     public Writers(List<List<String>> Data, String path, String TextBefore) throws IOException{
         FileWriter file;

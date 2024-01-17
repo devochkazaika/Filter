@@ -1,39 +1,43 @@
 package com.filter;
 
 import java.io.IOException;
-import java.io.Reader;
-
-/**
- * Hello world!
- *
- */
-
+import java.lang.reflect.Parameter;
+import java.util.HashMap;
  
  
 public class App 
 {
-    // public static void reader(){
-    //     try {
-    //         File file = new File("files/file.txt");
-    //         //создаем объект FileReader для объекта File
-    //         FileReader fr = new FileReader(file);
-    //         //создаем BufferedReader с существующего FileReader для построчного считывания
-    //         BufferedReader reader = new BufferedReader(fr);
-    //         // считаем сначала первую строку
-    //         String line = reader.readLine();
-    //         while (line != null) {
-    //             System.out.println(line);
-    //             // считываем остальные строки в цикле
-    //             line = reader.readLine();
-    //         }
-    //     } catch (FileNotFoundException e) {
-    //         e.printStackTrace();
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    // }
-    public static void main( String[] args ) throws IOException
+    static HashMap<String, String> Parametrs = new HashMap<>(){{
+        put("-s", null);
+        put("-f", null);
+        put("-o", null);
+        put("-a", null);
+        put("-p", null);
+    }};
+
+    static void checkParametrs(String[] args){
+        String value;
+        for (int i=0; i<args.length; i++){
+            value = Parametrs.get(args[i]);
+            if (value.charAt(0) == '-' && value.charAt(1) == 'f' || value.charAt(1) == 's'){
+                Parametrs.put(args[i], "1");
+            }
+            if (value.charAt(0) == '-'){
+                Parametrs.put(args[i], args[i+1]);
+                if (value != null){
+                    System.out.println("2 раза введен один и тот же параметр" + args[i]);
+                }
+            }
+            else{
+                System.out.println("Значение" + args[i]+ "без параметра");
+            }
+        }
+    }
+
+    public static void main(String[] args ) throws IOException
     {
+        checkParametrs(args);
+        
         Readers t = new Readers("files/file2.txt");
         Filter k = new Filter(t.getText());
         Writers s = new Writers(k.getData(), "int", "sd_");

@@ -76,7 +76,7 @@ public class Filter {
                     }
                     else if (letter == 'E'){
                         //Если E НЕ последний и после него НЕ идет '-' или '+' записать в string
-                        if (i == text.value.length()-1 || (text.value.charAt(i+1) != '-' && text.value.charAt(i+1) != '+')){
+                        if (i == text.value.length()-1 || (text.value.charAt(i+1) != '-' && text.value.charAt(i+1) != '+') || forE){
                             text.key = 3;
                         }
                         forE = true;
@@ -99,14 +99,17 @@ public class Filter {
                 case 1:
                     System.out.println(text.value + "=" + "int");
                     integers.add(text.value);
+                    Statistic.AddInt(text.value);
                     break;
                 case 2:
                     System.out.println(text.value + "=" +"float");
                     floats.add(text.value);
+                    Statistic.AddFloat(text.value);
                     break;
                 case 3:
                     System.out.println(text.value + "=" +"str");
                     strings.add(text.value);
+                    Statistic.AddString(text.value);
                     break;
             }
             text = new Pair(new String());
