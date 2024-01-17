@@ -15,6 +15,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.source>10</maven.compiler.source>
     <maven.compiler.target>10</maven.compiler.target>
   </properties>
@@ -26,33 +27,17 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>
+    <!-- <dependency> 
+              <groupId>commons-codec</groupId> 
+              <artifactId>commons-codec</artifactId> 
+              <version>1.15</version> 
+              </dependency> -->
+    </dependencies>
 
   <build>
   
     <!-- <pluginManagement>lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-      <!-- <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.0.0</version>
-             <executions>
-                <execution>
-                    <id>run-script</id>
-                    <phase>verify</phase> 
-                    <goals>
-                        <goal>exec</goal>
-                    </goals>
-                    <configuration>
-                        <executable>java</executable>
-                        <arguments>
-                            <argument>-jar</argument>
-                            <argument>target/filter-1.0-SNAPSHOT.jar</argument>
-                        </arguments>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin> -->
       <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
@@ -64,6 +49,7 @@
                         <mainClass>com.filter.App</mainClass>
                     </manifest>
                 </archive>
+            
             </configuration>
         </plugin>
 
