@@ -1,7 +1,8 @@
-com\filter\Filter$2.class
+com\filter\Statistic$Single$1.class
 com\filter\Filter.class
 com\filter\App.class
 com\filter\Statistic.class
+com\filter\Statistic$Single.class
 com\filter\Readers.class
 com\filter\Writers$1.class
 com\filter\Filter$1.class
