@@ -1,5 +1,9 @@
 C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\Filter.java
 C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\Writers.java
+C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\Statistic\Types\IStatisticTypes.java
 C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\App.java
-C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\Statistic.java
+C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\Statistic\Types\StatisticFloat.java
+C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\Statistic\Types\StatisticInt.java
+C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\Statistic\Types\StatisticString.java
+C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\Statistic\Statistic.java
 C:\Users\Основной\Desktop\CWT\filter\src\main\java\com\filter\Readers.java

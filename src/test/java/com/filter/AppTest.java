@@ -12,6 +12,10 @@ public class AppTest
     /**
      * Rigorous Test :-)
      */
+    // @Test
+    // public void onlyString() {
+        
+    // }
     @Test
     public void shouldAnswerWithTrue()
     {
