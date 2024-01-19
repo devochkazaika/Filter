@@ -1,4 +1,4 @@
-package com.filter;
+package com.filter.ReadAndWrite;
 
 import java.io.FileInputStream;
 import java.io.FileReader;

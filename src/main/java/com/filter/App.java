@@ -6,22 +6,26 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.filter.ReadAndWrite.Readers;
+import com.filter.ReadAndWrite.Writers;
 import com.filter.Statistic.Statistic;
  
  
 public class App 
 {
+    static HashMap<String, String> ParametrsWithArg = new HashMap<>(){{
+        put("-p", null);
+        put("-o", null);
+    }};
     static HashMap<String, Integer> Parametrs = new HashMap<>(){{
         put("-s", 0);
         put("-f", 0);
         put("-a", 0);
     }};
-    static HashMap<String, String> ParametrsWithArg = new HashMap<>(){{
-        put("-p", null);
-        put("-o", null);
-    }};
+    //имена файлов
     static Set<String> nameFiles = new HashSet<String>();
 
+    //задание параметра и проверка на корректность для параметров БЕЗ АРГУМЕНТА
     static void checkParametrs(String arg){
         if (Parametrs.get(arg) == 1){
             System.out.println("более 1 раза введен один и тот же параметр" + arg);
@@ -30,6 +34,7 @@ public class App
             Parametrs.put(arg, 1);
         }
     }
+    //задание параметра и проверка на корректность для параметров С АРГУМЕНТОМ
     static int checkParametrs(String arg, String value){
         if (ParametrsWithArg.get(arg) != null){
             System.out.println("более 1 раза введен один и тот же параметр -" + arg + " взят последний параметр");
@@ -49,7 +54,7 @@ public class App
             return 1;
         }
     }
-
+    //задание параметров в сеты
     static void setParametrs(String[] args){
         Set<String> parametrs = new HashSet<>(Parametrs.keySet()){{addAll(ParametrsWithArg.keySet());}};
         for (int i=0; i<args.length; i++){
@@ -67,30 +72,27 @@ public class App
             }
     }
 
-    public static void start() throws IOException{
-        Filter k = new Filter();
-        for (String string : nameFiles) {
-            Readers t = new Readers(string);
-            k.add(t.getText());
-        }
+    private static void describe(){
+        if (Parametrs.get("-f") > 0) Statistic.describe(true);
+        else if (Parametrs.get("-s") > 0) Statistic.describe(false);
     }
 
     public static void main(String[] args ) throws IOException
     {
         setParametrs(args);
-        System.out.println(Parametrs);
-        System.out.println(ParametrsWithArg);
-        System.out.println(nameFiles);
-        Filter k = new Filter();
+
+        Filter filter = new Filter();
         for (String string : nameFiles) {
-            Readers t = new Readers(string);
-            k.add(t.getText());
+            Readers input = new Readers(string);
+            filter.add(input.getText());
         }
-        if (Parametrs.get("-s") > 0) Statistic.describe(false);
-        else if (Parametrs.get("-f") > 0) Statistic.describe(true);
-        Writers s = new Writers(k.getData(), ParametrsWithArg.get("-o"), 
-                                            ParametrsWithArg.get("-p"), 
-                                            Parametrs.get("-a"));
+
+        //вывод статистики
+        describe();
+
+        Writers output = new Writers(filter.getData(),   ParametrsWithArg.get("-o"), 
+                                                    ParametrsWithArg.get("-p"), 
+                                                    Parametrs.get("-a"));
 
     }
 }

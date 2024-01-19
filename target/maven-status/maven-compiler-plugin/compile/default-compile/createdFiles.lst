@@ -1,14 +1,14 @@
 com\filter\Statistic\Types\StatisticString.class
 com\filter\App.class
-com\filter\Readers.class
+com\filter\ReadAndWrite\Writers.class
+com\filter\ReadAndWrite\Writers$1.class
 com\filter\Filter$1.class
-com\filter\Writers.class
 com\filter\App$1.class
 com\filter\Statistic\Types\IStatisticTypes.class
 com\filter\Filter.class
 com\filter\Statistic\Types\StatisticInt.class
-com\filter\Writers$1.class
 com\filter\App$2.class
 com\filter\Statistic\Statistic.class
+com\filter\ReadAndWrite\Readers.class
 com\filter\App$3.class
 com\filter\Statistic\Types\StatisticFloat.class
