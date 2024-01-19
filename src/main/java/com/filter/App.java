@@ -40,7 +40,8 @@ public class App
         
         Readers t = new Readers("files/file2.txt");
         Filter k = new Filter(t.getText());
-        Statistic.describe();
+        Statistic.describe(true);
+        Statistic.describe(false);
         // Writers s = new Writers(k.getData(), "int", "sd_");
 
     }

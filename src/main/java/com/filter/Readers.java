@@ -27,6 +27,7 @@ public class Readers extends FileReader{
                 text += letter;
             }
         }
+        if (text != "") return text;
         return null;
     }
 
