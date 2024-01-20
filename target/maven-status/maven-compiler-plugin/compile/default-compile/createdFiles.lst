@@ -6,6 +6,7 @@ com\filter\Filter$1.class
 com\filter\App$1.class
 com\filter\Statistic\Types\IStatisticTypes.class
 com\filter\Filter.class
+com\filter\ReadAndWrite\Readers$1.class
 com\filter\Statistic\Types\StatisticInt.class
 com\filter\App$2.class
 com\filter\Statistic\Statistic.class

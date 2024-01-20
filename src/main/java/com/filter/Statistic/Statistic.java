@@ -41,13 +41,13 @@ public class Statistic {
     }
 
     public static void AddFloat(String text){
-        Add(Float.parseFloat(text), floats);
+        Add(Double.parseDouble(text), floats);
     }
     public static void AddInt(String text){
-        Add(Integer.parseInt(text), integers);
+        Add(Long.parseLong(text), integers);
     }
     public static void AddString(String text){
-        Add(text.length(), strings);
+        Add((long) text.length(), strings);
     }
 
     static String[] name_rows = {"count", "mean", "sum", "min", "max"};
@@ -60,7 +60,7 @@ public class Statistic {
             return type.getCount();
         }
         if (type.getCount() != 0){
-            int begin = (type instanceof StatisticString) ? 2 : 1;
+            int begin = (type instanceof StatisticString) ? 3 : 1;
             for (int i=begin; i<name_rows.length; i++) {
                 tmp = getValue(type, name_rows[i]) + "";
                 System.out.println(name_rows[i] + " ".repeat(10-name_rows[i].length()) + tmp);

@@ -5,7 +5,7 @@ public interface IStatisticTypes<T> {
     public T getMax();
     public T getMin();
     public T getSum();
-    public float getMean();
+    public Double getMean();
     void setCount(Integer value);
     void setMax(T value);
     void setSum(T value);

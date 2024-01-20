@@ -1,29 +1,29 @@
 package com.filter.Statistic.Types;
 
-public class StatisticInt implements IStatisticTypes<Integer>{
+public class StatisticInt implements IStatisticTypes<Long>{
     int count = 0;
-    float mean = 0;
-    int sum = 0;
-    int max = -Integer.MAX_VALUE;
-    int min = Integer.MAX_VALUE;
+    Double mean = (double) 0;
+    long sum = 0;
+    long max = -Long.MAX_VALUE;
+    long min = Long.MAX_VALUE;
     @Override
     public int getCount(){return count;}
     @Override
-    public Integer getSum(){return sum;}
+    public Long getSum(){return sum;}
     @Override
-    public Integer getMax(){return max;}
+    public Long getMax(){return max;}
     @Override
-    public Integer getMin(){return min;}
+    public Long getMin(){return min;}
     @Override
-    public float getMean() {return mean;}
+    public Double getMean() {return mean;}
     @Override
     public void setCount(Integer value){count = value;}
     @Override
-    public void setMax(Integer value){max = value.intValue();}
+    public void setMax(Long value){max = value.intValue();}
     @Override
-    public void setMin(Integer value){min = value.intValue();}
+    public void setMin(Long value){min = value.intValue();}
     @Override
-    public void setMean(Integer s, Integer c){mean = (float) s / (float) c;}
+    public void setMean(Long s, Integer c){mean = (double) s / (double) c;}
     @Override
-    public void setSum(Integer value){sum += value.intValue();}
+    public void setSum(Long value){sum += value.intValue();}
 }

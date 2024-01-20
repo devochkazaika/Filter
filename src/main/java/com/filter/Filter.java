@@ -32,7 +32,7 @@ public class Filter {
     public void add(List<String> Text){
         for (String i : Text) {
             try {
-                Integer.parseInt(i);
+                Long.parseLong(i);
                 integers.add(i);
                 Statistic.AddInt(i);
             } 

@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -35,28 +38,32 @@ public class Readers{
     }
 
     public Readers(String path) throws IOException{
-        FileReader read = new FileReader(path, StandardCharsets.UTF_8);
-        String line;
-        Text = new ArrayList<>();
-        if ((line = readline(read)) != null) {
-            Text.add(line);
-        }
+        this(new LinkedList<>(){{add(path);}});
     }
 
-    public Readers(Collection<String> paths) throws IOException{
-        LinkedList<FileReader> Files = new LinkedList<>();
+    public Readers(List<String> paths) throws IOException{
+        LinkedList<FileReader> files = new LinkedList<>();
         for (String path : paths) {
-            Files.add(new FileReader(path, StandardCharsets.UTF_8));
+            Path p = Paths.get(path);
+            if (Files.exists(p)){
+                files.add(new FileReader(path, StandardCharsets.UTF_8));
+            }
+            else{
+                System.out.println("Файла - " + path + " не существует");
+            }
         }
+        addToText(files);
+    }
+    public void addToText(LinkedList<FileReader> files) throws IOException{
         String line;
         Text = new ArrayList<>();
-        while (Files.size() != 0){
-            for (FileReader read : Files) {
+        while (files.size() != 0){
+            for (FileReader read : files) {
                 if ((line = readline(read)) != null) {
                     Text.add(line);
                 }
                 else{
-                    Files.remove(read);
+                    files.remove(read);
                 }   
             }
         }
