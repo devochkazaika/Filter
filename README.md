@@ -12,5 +12,15 @@
 <span style="color: #062873; font-weight: bold">&lt;/dependency&gt;</span>
 </div>
 
+<div>Запуск
+<div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+java -jar target/filter-1.0-SNAPSHOT.jar
+</pre></div>
+  
+<div>Сборка
+<div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+mvn clean install
+</pre></div>
+</div>
 
 
