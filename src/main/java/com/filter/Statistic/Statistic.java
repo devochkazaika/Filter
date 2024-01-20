@@ -24,23 +24,6 @@ public class Statistic {
         }
     }
 
-    protected <T> void setValue(IStatisticTypes<T> type, String arg, T value) {
-        switch (arg) {
-            case "count":
-                type.setCount((int) value);
-                break;
-            case "sum":
-                type.setSum(value);
-                break;
-            case "min":
-                type.setMin(value);
-                break;
-            case "max":
-                type.setMax(value);
-                break;
-        }
-    }
-
     private static <T extends Comparable<T>> void Add(T value, IStatisticTypes<T> stat) {
         stat.setCount(stat.getCount() + 1);
         T currentMax = stat.getMax();
@@ -49,7 +32,6 @@ public class Statistic {
         if (currentMax == null || value.compareTo(currentMax) > 0) {
             stat.setMax(value);
         }
-
         if (currentMin == null || value.compareTo(currentMin) < 0) {
             stat.setMin(value);
         }
@@ -69,7 +51,8 @@ public class Statistic {
     }
 
     static String[] name_rows = {"count", "mean", "sum", "min", "max"};
-    public static <T> int get(IStatisticTypes<T> type, boolean t){
+    //вывод статистики по каждому полю из name_rows (кроме string т. к. там не нужны среднее и сумма)
+    public static <T> int getStatistic(IStatisticTypes<T> type, boolean t){
         String tmp;
         tmp = ""+type.getCount();
         System.out.println("count" + " ".repeat(10-name_rows[0].length()) + tmp);
@@ -85,24 +68,14 @@ public class Statistic {
         }
         return type.getCount();
     }
-    protected static void getIntegers(boolean t){
-        get(integers, t);
-        System.out.println("dtype: int" + '\n');
-    }
 
-    protected static void getFloats(boolean t){
-        get(floats, t);
-        System.out.println("dtype: float" + '\n');
-    }
-
-    protected static void getStrings(boolean t){
-        get(strings, t);
-        System.out.println("dtype: string" + '\n');
-    }
     // Статистика по всем типам данных с флагом "-s" - краткая, "-f" - полная
     public static void describe(boolean t){
-        getIntegers(t);
-        getFloats(t);
-        getStrings(t);
+        getStatistic(integers, t);
+        System.out.println("dtype: int" + '\n');
+        getStatistic(floats, t);
+        System.out.println("dtype: float" + '\n');
+        getStatistic(strings, t);
+        System.out.println("dtype: string" + '\n');
     }
 }

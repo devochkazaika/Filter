@@ -1,8 +1,10 @@
-asdasdasd
-asdasdasddasdas
-asdasdasddasdas
-asdasdasd
-123123
-123123
-53353
+-15
+-12
+-12.2E+15
+-12.2E-15
 446
+asdas'dlasd'Lorem
+sad;alsd'asdas
+sadlasd;asd;,
+asld;as,;d;a,sadlasd
+123.456

@@ -11,7 +11,6 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 public class Writers{
-    private List<String> words;
 
     FileWriter integers;
     FileWriter floats;
@@ -20,23 +19,11 @@ public class Writers{
     public Writers(String path) throws IOException{
     }
 
-    public static HashMap<Integer, String> IndexType = new HashMap<Integer, String>(){{
+    public static HashMap<Integer, String> NameType = new HashMap<Integer, String>(){{
         put(0, "integers");
         put(1, "floats");
         put(2, "strings");
     }};
-
-    public static void AddText(String filePath, String text){
-        try {
-            FileWriter writer = new FileWriter(filePath, true);
-            BufferedWriter bufferWriter = new BufferedWriter(writer);
-            bufferWriter.write(text);
-            bufferWriter.close();
-        }
-        catch (IOException e) {
-            System.out.println("Ошибка при добавлении текста в файл " + filePath);
-        }
-    }
 
     public Writers(List<List<String>> Data, String path, String TextBefore, int FlagA) throws IOException{
         FileWriter file;
@@ -44,15 +31,18 @@ public class Writers{
         path = (path == null) ? "" : path;
         TextBefore = (TextBefore == null) ? "" : TextBefore;
 
+        //Прохождение по всем типам данных в соответствии с индекс - ключ NameType, название - значение NameType[i]
         for (int i=0; i<3; i++){
             if (Data.get(i).size() != 0){
                 File directory = new File(path);
+                //создание папки, если ее нет
                 if (!directory.exists()) {
                     directory.mkdirs();
                     new File(path + '/').mkdirs();
                 }
+                //запись
                 try {
-                    file = new FileWriter(path + '/' + TextBefore + IndexType.get(i) + ".txt", StandardCharsets.UTF_8, addFlag);
+                    file = new FileWriter(path + '/' + TextBefore + NameType.get(i) + ".txt", StandardCharsets.UTF_8, addFlag);
                     for (String integer : Data.get(i)) {
                         file.write(integer);
                         file.append('\n');

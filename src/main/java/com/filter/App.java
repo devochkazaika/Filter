@@ -1,6 +1,10 @@
 package com.filter;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,7 +27,7 @@ public class App
         put("-a", 0);
     }};
     //имена файлов
-    static Set<String> nameFiles = new HashSet<String>();
+    static ArrayList<String> nameFiles = new ArrayList<String>();
 
     //задание параметра и проверка на корректность для параметров БЕЗ АРГУМЕНТА
     static void checkParametrs(String arg){
@@ -77,15 +81,18 @@ public class App
         else if (Parametrs.get("-s") > 0) Statistic.describe(false);
     }
 
-    public static void main(String[] args ) throws IOException
+    private static void addFiles(Filter filter) throws IOException{
+        Readers t = new Readers(nameFiles);
+        filter.add(t.getText());
+    }
+
+    public static void main(String[] args) throws IOException
     {
         setParametrs(args);
 
+        //Добавление имен файлов
         Filter filter = new Filter();
-        for (String string : nameFiles) {
-            Readers input = new Readers(string);
-            filter.add(input.getText());
-        }
+        addFiles(filter);
 
         //вывод статистики
         describe();
