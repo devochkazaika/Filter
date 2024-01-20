@@ -1,14 +1,10 @@
 package com.filter.ReadAndWrite;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.swing.JOptionPane;
 
 public class Writers{
 
