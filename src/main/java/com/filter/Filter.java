@@ -29,6 +29,7 @@ public class Filter {
         add(Text);
     }
 
+    //добавление с распознаванием
     public void add(List<String> Text){
         for (String i : Text) {
             try {
@@ -45,11 +46,11 @@ public class Filter {
                 catch(NumberFormatException t) {
                     try{
                         strings.add(i);
+                        Statistic.AddString(i);
                     }
                     catch(NumberFormatException a){
-                        System.out.println("Ошибка распознавания");
+                        System.out.println("Ошибка распознавания - " + i);
                     }
-                    Statistic.AddString(i);
                 }
             }
         }

@@ -6,7 +6,7 @@ public class Statistic {
     static StatisticInt integers = new StatisticInt();
     static StatisticString strings = new StatisticString();
     static StatisticFloat floats = new StatisticFloat();
-
+    //вывод данных
     private static <T> Object getValue(IStatisticTypes<T> type, String fieldName) {
         switch (fieldName) {
             case "count":
@@ -20,10 +20,10 @@ public class Statistic {
             case "mean":
                 return type.getMean();
             default:
-                throw new IllegalArgumentException("Invalid field name: " + fieldName);
+                throw new IllegalArgumentException("Неверный атрибут " + fieldName);
         }
     }
-
+    //добавление данных
     private static <T extends Comparable<T>> void Add(T value, IStatisticTypes<T> stat) {
         stat.setCount(stat.getCount() + 1);
         T currentMax = stat.getMax();
