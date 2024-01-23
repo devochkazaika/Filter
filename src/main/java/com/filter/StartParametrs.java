@@ -69,21 +69,6 @@ public class StartParametrs {
         if (nameFiles.size() == 0) System.out.println("Не введены имена файлов");
     }
 
-    static void checkpath(){
-        String ob = ParametrsWithArg.get("-o");
-        if (ob != null){
-            if (ob.charAt(0) != '/'){
-
-            }
-            else{
-                if (ob.length() == 1){
-                    System.out.println("Неправильное имя пути для сохранения");
-                    ParametrsWithArg.put("-o", null);
-                }
-            
-            }
-        }
-    }
     
     public static void addFiles(Filter filter) throws IOException{
         Readers t = new Readers(nameFiles);
